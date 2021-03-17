@@ -18,8 +18,9 @@ class CreateUserDetailsTable extends Migration
             $table->string('address');
             $table->timestamps();
 
-            $table->bigInteger('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->bigInteger('user_id')->unsigned()->unique();
+            $table->foreign('user_id')->references('id')->on('users')
+                ->onUpdate('cascade');
         });
     }
 
