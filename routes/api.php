@@ -26,4 +26,10 @@ Route::prefix('v1')->name('api.v1.')->namespace('Api\\V1')->group(function () {
     Route::apiResource('users', 'UserController');
 });
 
+Route::fallback(function () {
+    return response()->json([
+        'message' => 'Not found'
+    ], 404);
+});
+
 
